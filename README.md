@@ -1,5 +1,5 @@
 # 中文文本摘要
-基于Text Rank 和 LDA 模型，进行中文文本摘要，运行如下图所示：
+基于Text Rank 和 LDA 模型，进行中文文本摘要：
 
 ![](./textSum.gif)
 
