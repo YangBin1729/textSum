@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NLP in Action</title>
+
+
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-theme.min.css') }}">
+
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1>NLP in Action</h1>
+    </div>
+
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.input_text.label }}
+            {{ form.input_text( id="input_text", class="form-control", rows="10" ) }}
+        </div>
+        {{ form.submit(type="submit",class="btn btn-default" ) }}
+    </form>
+
+    {% if results %}
+    <h1>摘要：</h1>
+    <div class="row" style="margin-top: 20px">
+        <div class="col-sm-6">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading text-center"><h5>TextRank</h5></div>
+
+                <div class="tab-content panel-body">
+
+                    <ul class="nav nav-pills nav-justified" role="tablist">
+                        <li role="presentation" class="active"><a data-toggle="tab" aria-controls="home" role="tab" href="#menu1">50%</a></li>
+                        <li role="presentation"><a data-toggle="tab" aria-controls="home" role="tab" href="#menu2">20%</a></li>
+                        <li role="presentation"><a data-toggle="tab" aria-controls="home" role="tab" href="#menu3">10%</a></li>
+                    </ul>
+
+                    <div class="panel panel-default" style="margin-top: 10px">
+                        <div class="tab-content panel-body">
+
+                            <div id="menu1" role="tabpanel" class="tab-pane active">
+                                {% for idx in range(length//2) %}
+                                &nbsp;&nbsp;&nbsp;&nbsp;{{ results['text_rank'][idx][1] }}<br>
+                                {% endfor %}
+                            </div>
+
+                            <div id="menu2" role="tabpanel" class="tab-pane">
+                                {% if length//5==0 %}
+                                {{ results['text_rank'][0][1] }}<br>
+                                {% else %}
+                                {% for idx in range(length//5) %}
+                                &nbsp;&nbsp;&nbsp;&nbsp;{{ results['text_rank'][idx][1] }}<br>
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+
+                            <div id="menu3" role="tabpanel" class="tab-pane">
+                                {% if length//10==0 %}
+                                {{ results['text_rank'][0][1] }}<br>
+                                {% else %}
+                                {% for idx in range(length//10) %}
+                                &nbsp;&nbsp;&nbsp;&nbsp;{{ results['text_rank'][idx][1] }}<br>
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="col-sm-6">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading text-center"><h5>LDA</h5></div>
+
+                <div class="tab-content panel-body">
+
+                    <ul class="nav nav-pills nav-justified" role="tablist">
+                        <li role="presentation" class="active"><a data-toggle="tab" aria-controls="home" role="tab" href="#menu11">50%</a></li>
+                        <li role="presentation"><a data-toggle="tab" aria-controls="home" role="tab" href="#menu22">20%</a></li>
+                        <li role="presentation"><a data-toggle="tab" aria-controls="home" role="tab" href="#menu33">10%</a></li>
+                    </ul>
+
+                    <div class="panel panel-default" style="margin-top: 10px">
+                        <div class="tab-content panel-body">
+
+                            <div id="menu11" role="tabpanel" class="tab-pane active">
+                                {% for idx in range(length//2) %}
+                                &nbsp;&nbsp;&nbsp;&nbsp;{{ results['lda'][idx][1] }}<br>
+                                {% endfor %}
+                            </div>
+
+                            <div id="menu22" role="tabpanel" class="tab-pane">
+                                {% if length//5==0 %}
+                                &nbsp;&nbsp;&nbsp;&nbsp;{{ results['lda'][0][1] }}<br>
+                                {% else %}
+                                {% for idx in range(length//5) %}
+                                &nbsp;&nbsp;&nbsp;&nbsp;{{ results['lda'][idx][1] }}<br>
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+
+                            <div id="menu33" role="tabpanel" class="tab-pane">
+                                {% if length//10==0 %}
+                                &nbsp;&nbsp;&nbsp;&nbsp;{{ results['lda'][0][1] }}<br>
+                                {% else %}
+                                {% for idx in range(length//10) %}
+                                &nbsp;&nbsp;&nbsp;&nbsp;{{ results['lda'][idx][1] }}<br>
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    {% endif %}
+
+
+</div>
+
+
+</body>
+</html>
