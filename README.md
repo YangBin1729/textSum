@@ -17,6 +17,8 @@
 
 将模型文件保存在 `saved/` 文件夹里
 
+模型文件百度网盘：链接：https://pan.baidu.com/s/1MeUzvylqxCOkJTPK5G3wjw 
+提取码：aa60
 ## TODO：
 bertSum 模型 
 
