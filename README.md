@@ -15,10 +15,11 @@
 	- 基于新闻数据，训练得到LDA模型
 	- 计算段落的主题分布，然后计算各个句子的主题分布，求得两者的相似度，从中得到摘要
 
-将模型文件保存在 `saved/` 文件夹里
+将模型文件保存在 `saved/` 文件夹里    
 
-模型文件百度网盘：链接：https://pan.baidu.com/s/1MeUzvylqxCOkJTPK5G3wjw 
-提取码：aa60
+模型文件链接：[百度网盘](https://pan.baidu.com/s/1P4UgvowPS9XayfjGWXCtLw)提取码：iz1j 
+
+
 ## TODO：
 bertSum 模型 
 
